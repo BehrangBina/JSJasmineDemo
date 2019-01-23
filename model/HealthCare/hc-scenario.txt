@@ -1,0 +1,11 @@
+<ABC> company, which provides solutions for the health care industry. Currently, there is a
+need to design a component that can get a person's details (such as name, age, blood group,
+details of diseases, and so on) and process it for further usage. Now, assume that you are
+developing a component that verifies a person's blood or organ donation details. There are
+also a few factors/biological rules that exist to donate or receive blood.
+"As a doctor/physician, I want to validate all the factors/biological rules so that I can accept
+someone's blood for further usage"
+
+ Scenario-1: The person's age should be greater than or equal to 18
+ Scenario-2: The person should not be HIV+
+ Scenario-3: In Europe, the person's age should be greater than or equal to 16
