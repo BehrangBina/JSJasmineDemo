@@ -1,0 +1,16 @@
+{
+  "name": "jasmine_testing",
+  "version": "1.0.0",
+  "description": "Jasmine Testing ",
+  "main": "model/main.js",
+  "dependencies": {
+    "jasmine": "^3.3.1",
+    "jshint": "^2.9.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jasmine run"
+  },
+  "author": "Ben Bina",
+  "license": "ISC"
+}
