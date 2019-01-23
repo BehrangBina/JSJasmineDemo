@@ -3,7 +3,7 @@ var Candidate = function (name, DOB, bloodgroup, donor_receiver) {
     this.myBloodGroup = bloodgroup || "B-";
     this.donor_receiver = donor_receiver;
     this.ValidateAge = function (myDOB) {
-        this.myDOB || DOB;
+        this.myDOB = myDOB || DOB;
         return this.getAge(this.myDOB);
     };
     this.ValidateHIV = function (personName, personDOB, personBloodGroup) {
