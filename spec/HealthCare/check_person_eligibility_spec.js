@@ -49,14 +49,18 @@ describe("<ABC> Company: Health Care Solution, ", function () {
                 expect(testPersonCriteria.MatchBloodGroupToGiveReceive.calls.any()).toEqual(true);
                 expect(testPersonCriteria.MatchBloodGroupToGiveReceive.calls.count()).toEqual(1);
                 expect(validatedResult).toContain("O+");
-
-
-
             });
-            xit("can give the blood to the person with A+ blood group", function () {
-
+            it("can give the blood to the person with A+ blood group", function () {
+                var testPersonCriteria = new Candidate("John Smith", "01/01/1997","O+","Donor");
+                spyOn(testPersonCriteria,"MatchBloodGroupToGiveReceive").and.callThrough();
+                var callback = jasmine.createSpy();
+                var validatedResult = testPersonCriteria.ValidateBloodGroup(callback);
+                expect(callback).toHaveBeenCalled();
+                expect(testPersonCriteria.MatchBloodGroupToGiveReceive).toHaveBeenCalled();
+                expect(testPersonCriteria.MatchBloodGroupToGiveReceive.calls.any()).toEqual(true);
+                expect(testPersonCriteria.MatchBloodGroupToGiveReceive.calls.count()).toBe(1);
+                expect(validatedResult).toContain("A+");
             });
-
         });
 
     });

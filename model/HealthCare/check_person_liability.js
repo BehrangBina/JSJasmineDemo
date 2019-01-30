@@ -43,7 +43,7 @@ Candidate.prototype.checkHIV = function (pName, pDOB, pBloodGroup) {
     }
     return bolHIVResult;
 };
-Candidate.prototype.MatchBloodGroupToGiveReceive = function (callback) {
+Candidate.prototype.MatchBloodGroupToGiveReceive = function (callback) {    
     var matchBloodGroup;
     if (this.myBloodGroup == "O+" && this.donor_receiver.toUpperCase() ==
         "RECEIVER") {
@@ -52,6 +52,8 @@ Candidate.prototype.MatchBloodGroupToGiveReceive = function (callback) {
         matchBloodGroup = ["A+"];
     } else if (this.myBloodGroup == "B-" && this.donor_receiver.toUpperCase() == "RECEIVER") {
         matchBloodGroup = ["B-", "O-"];
+    } else if(this.donor_receiver.toUpperCase() != "DONOR" || this.donor_receiver.toUpperCase() == "RECEIVER" ){
+        throw new ValidationError ( "Donor should be either <Donor> or <Receiver> but value was: "+ this.donor_receiver.toUpperCase());
     }
     callback.call(this, matchBloodGroup);
 };
