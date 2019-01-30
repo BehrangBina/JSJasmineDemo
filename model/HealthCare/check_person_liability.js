@@ -12,6 +12,18 @@ var Candidate = function (name, DOB, bloodgroup, donor_receiver) {
         this.myBloodGroup = personBloodGroup || this.myBloodGroup;
         return this.checkHIV(this.myName, this.myDOB, this.myBloodGroup);
     };
+    //the ValidateBloodGroup() function accepts an argument as the callback function.
+    //returns matching/eligible blood group(s) for the receiver/donor by calling the MatchBloodGroupToGiveReceive function.
+    this.ValidateBloodGroup = function (callback) {
+        var _this = this;
+        var matchBloodGroup;
+        this.MatchBloodGroupToGiveReceive(function (personBloodGroup) {
+            _this.personBloodGroup = personBloodGroup;
+            matchBloodGroup = personBloodGroup;
+            callback.call(_this, _this.personBloodGroup);
+        });
+        return matchBloodGroup;
+    };
 };
 Candidate.prototype.getAge = function (birth) {
     console.log("getAge() function is called");
@@ -31,6 +43,19 @@ Candidate.prototype.checkHIV = function (pName, pDOB, pBloodGroup) {
     }
     return bolHIVResult;
 };
+Candidate.prototype.MatchBloodGroupToGiveReceive = function (callback) {
+    var matchBloodGroup;
+    if (this.myBloodGroup == "O+" && this.donor_receiver.toUpperCase() ==
+        "RECEIVER") {
+        matchBloodGroup = ["O+"];
+    } else if (this.myBloodGroup == "O+" && this.donor_receiver.toUpperCase() == "DONOR") {
+        matchBloodGroup = ["A+"];
+    } else if (this.myBloodGroup == "B-" && this.donor_receiver.toUpperCase() == "RECEIVER") {
+        matchBloodGroup = ["B-", "O-"];
+    }
+    callback.call(this, matchBloodGroup);
+};
+
 // Define custom error for validation
 function ValidationError(message) {
     this.message = message;

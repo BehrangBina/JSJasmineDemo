@@ -9,3 +9,10 @@ someone's blood for further usage"
  Scenario-1: The person's age should be greater than or equal to 18
  Scenario-2: The person should not be HIV+
  Scenario-3: In Europe, the person's age should be greater than or equal to 16
+
+ //Custom Matcher Test Cases  ValidateBloodGroup
+
+ Scenario-1: Person with O+ blood group can receive blood from a person with O+ blood group
+ Scenario 2: Person with O+ blood group can give blood to a person with A+ blood group
+ Scenario 3: Person with B- blood group can receive blood from a person with B- blood group
+ Scenario 4: Person with B- blood group can receive blood from a person with O- blood group
