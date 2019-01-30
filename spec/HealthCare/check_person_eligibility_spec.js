@@ -62,7 +62,29 @@ describe("<ABC> Company: Health Care Solution, ", function () {
                 expect(validatedResult).toContain("A+");
             });
         });
+        describe ("Person with B- Blood type", function(){
+            
+            it("Person with B- blood group can receive blood from a person with B- blood group", function(){
+                var testPersonCriteria = new Candidate ("John Smith","10/11/1977","B-","Receiver");
+                spyOn(testPersonCriteria,"MatchBloodGroupToGiveReceive").and.callThrough();
+                var callback = jasmine.createSpy();
+                var validatedResult = testPersonCriteria.ValidateBloodGroup(callback);
+                expect(testPersonCriteria.MatchBloodGroupToGiveReceive.calls.any()).toEqual(true);
+                expect(callback).toHaveBeenCalled();
+                expect(validatedResult).toContain("B-");
+            });
+            it("Person with B- blood group can receive blood from a person with O- blood group",function(){
+                var testPersonCriteria = new Candidate("John Smith","1/1/2001","B-","receiver");
+                spyOn(testPersonCriteria,"MatchBloodGroupToGiveReceive").and.callThrough();
+                var callback = jasmine.createSpy();
+                var validatedResult = testPersonCriteria.ValidateBloodGroup(callback);
+                expect(callback).toHaveBeenCalled();                
+                expect(testPersonCriteria.MatchBloodGroupToGiveReceive).toHaveBeenCalled();
+                expect(testPersonCriteria.MatchBloodGroupToGiveReceive.calls.count()).toBe(1);
+                expect(validatedResult).toContain("O-");
 
+            });
+        });
     });
     describe("Tracking Properties", function () {
         describe("Tracking Properties, ", function () {
