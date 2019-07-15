@@ -4,8 +4,9 @@
   "description": "Jasmine Testing ",
   "main": "model/main.js",
   "dependencies": {
-    "jasmine": "^3.3.1",
-    "jshint": "^2.9.7"
+    "jasmine": "^3.4.0",
+    "jshint": "^2.10.2",
+    "npm": "^6.10.1"
   },
   "devDependencies": {},
   "scripts": {
